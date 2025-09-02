@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IPSEnvelope xmlns="ISO200022PayMessageResponse" xmlns:header="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:document="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.09" xmlns:sign="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ISO200022PayMessageResponse PayMsgRes.xsd">
+	<header:AppHdr>
+		<header:Fr>
+			<header:FIId>
+				<header:FinInstnId>
+					<header:Othr>
+						<header:Id>000000000000</header:Id><!--23 Идентификатор ОПКЦ СБП-->
+					</header:Othr>
+				</header:FinInstnId>
+			</header:FIId>
+		</header:Fr>
+		<header:To>
+			<header:FIId>
+				<header:FinInstnId>
+					<header:Othr>
+						<header:Id>111111111111</header:Id><!--22 Идентификатор Банка Плательщика-->
+					</header:Othr>
+				</header:FinInstnId>
+			</header:FIId>
+		</header:To>
+		<header:BizMsgIdr>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</header:BizMsgIdr><!--27 Идентификатор Операции ОПКЦ СБП-->
+		<header:MsgDefIdr>pacs.002.001.09</header:MsgDefIdr><!--43 Схема Сообщения СБП (ISO-20022)-->
+		<header:BizSvc>B21</header:BizSvc><!--98 Тип сообщения СБП-->
+		<header:CreDt>2001-12-17T09:30:47.000Z</header:CreDt><!--15 Дата и Время Отправки Сообщения ОПКЦ СБП-->
+		<header:Sgntr>
+			<sign:Sign>MIIBYAYJKoZIhvcNAQcCoIIBUTCCAU0CAQExDjAMBggqhQMHAQECAgUAMAsGCSqGSIb3DQEHATGCASkwggElAgEBMFcwQzELMAkGA1UEBhMCUlUxCzAJBgNVBAgTAjQ1MQwwCgYDVQQKEwNDQlIxDDAKBgNVBAsTA01DSTELMAkGA1UEAxMCQ0ECEEBQFMAOiT+q8b+gD1s7b3wwDAYIKoUDBwEBAgIFAKBpMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE4MDcyMDE1MDIzMVowLwYJKoZIhvcNAQkEMSIEIM1RmSmeRD9IghIkJ1coLt4JuZKptvBxReUA3DQcvwDIMAwGCCqFAwcBAQEBBQAEQInuAy4mH/j0/nsMW2k2QnH9cQUhU3q45lsgBxnHNKqi2GIWOM6hjG1GbY6eFCEFGfx8iV/WUROFE2U7dQwcKxY=</sign:Sign><!--106 Электронная Подпись-->
+		</header:Sgntr>
+	</header:AppHdr>
+	<document:Document>
+		<document:FIToFIPmtStsRpt>
+			<document:GrpHdr>
+				<document:MsgId>1A2F3D5F6G7Z8J9K0C4S5C6D7V5D1N72</document:MsgId><!--81 Уникальный Номер Сообщения от ОПКЦ СБП-->
+				<document:CreDtTm>2001-12-17T09:30:47.000Z</document:CreDtTm><!--15 Дата и Время Отправки Сообщения ОПКЦ СБП-->
+			</document:GrpHdr>
+			<document:TxInfAndSts>
+				<document:OrgnlEndToEndId>C2BQRS</document:OrgnlEndToEndId><!--48 Тип Операции СБП-->
+				<document:OrgnlTxId>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</document:OrgnlTxId><!--27 Идентификатор Операции ОПКЦ СБП-->
+				<document:TxSts>ACWP</document:TxSts><!--42 Статус Операции СБП-->
+				<document:StsRsnInf>
+					<document:Orgtr>
+						<document:Id>
+							<document:OrgId>
+								<document:Othr>
+									<document:Id>000000000000</document:Id><!--23 Идентификатор ОПКЦ СБП-->
+								</document:Othr>
+							</document:OrgId>
+						</document:Id>
+					</document:Orgtr>
+					<document:Rsn>
+						<document:Prtry>I00000</document:Prtry><!--29 Код Ответа-->
+					</document:Rsn>
+					<document:AddtlInf>OPKC_OK</document:AddtlInf><!--текстовое описание кода ответа-->
+				</document:StsRsnInf>
+				<document:AccptncDtTm>2001-12-17T09:30:47.000Z</document:AccptncDtTm><!--99 Метка времени операции СБП-->
+				<document:OrgnlTxRef>
+					<document:IntrBkSttlmAmt Ccy="RUB">10000</document:IntrBkSttlmAmt><!--44 Сумма операции СБП-->
+					<document:IntrBkSttlmDt>2001-12-17</document:IntrBkSttlmDt><!--105 Дата расчетов операции СБП-->
+					<document:PmtTpInf>
+                        <document:SvcLvl>
+                            <document:Prtry>C2BPL</document:Prtry><!--49 Тип Сценария по Операции СБП-->
+                        </document:SvcLvl>
+                    </document:PmtTpInf>
+					<document:Dbtr>
+						<document:Pty>
+							<document:Id>
+								<document:PrvtId>
+									<document:Othr>
+										<document:Id>0079101234567</document:Id><!--21 Идентификатор Плательщика-->
+										<document:SchmeNm>
+											<document:Prtry>MTEL</document:Prtry><!--46 Тип Идентификатора Плательщика-->
+										</document:SchmeNm>
+									</document:Othr>
+								</document:PrvtId>
+							</document:Id>
+						</document:Pty>
+					</document:Dbtr>
+					<document:DbtrAgt>
+						<document:FinInstnId>
+							<document:ClrSysMmbId>
+								<document:MmbId>045003002</document:MmbId><!--94 Банковский Идентификационный Код Банка Плательщика-->
+							</document:ClrSysMmbId>
+							<document:Othr>
+								<document:Id>111111111111</document:Id><!--22 Идентификатор Банка Плательщика-->
+							</document:Othr>
+						</document:FinInstnId>
+					</document:DbtrAgt>
+					<document:CdtrAgt>
+						<document:FinInstnId>
+							<document:ClrSysMmbId>
+								<document:MmbId>045003777</document:MmbId><!--95 Банковский Идентификационный Код Банка Получателя-->
+							</document:ClrSysMmbId>
+							<document:Othr>
+								<document:Id>222222222222</document:Id><!--24 Идентификатор Банка Получателя-->
+							</document:Othr>
+						</document:FinInstnId>
+					</document:CdtrAgt>
+					<document:Cdtr>
+						<document:Pty>
+							<document:Nm>ООО "Ромашка"</document:Nm><!--131 Наименование юридического лица-->
+							<document:Id>
+								<document:OrgId>
+									<document:Othr>
+										<document:Id>MA0000000000</document:Id><!--139 Идентификатор Торгово-сервисного предприятия-->
+										<document:SchmeNm>
+											<document:Prtry>MRCH</document:Prtry><!--константа-->
+										</document:SchmeNm>
+									</document:Othr>
+									<document:Othr>
+										<document:Id>Кофейня у Ивана</document:Id><!--140 Торговое Наименование Торгово-сервисного предприятия-->
+										<document:SchmeNm>
+											<document:Prtry>MRNM</document:Prtry><!--константа-->
+										</document:SchmeNm>
+									</document:Othr>
+									<document:Othr>
+										<document:Id>AS1000670LSS7DN18SJQDNP4B05KLJL2</document:Id><!--159 Уникальный Идентификатор Данных-->
+										<document:SchmeNm>
+											<document:Prtry>QRStat</document:Prtry><!--47 Тип Идентификатора Получателя-->
+										</document:SchmeNm>
+									</document:Othr>
+									<document:Othr>
+										<document:Id>7706812159</document:Id><!--97 Идентификационный номер налогоплательщика Получателя-->
+										<document:SchmeNm>
+											<document:Prtry>TIDN</document:Prtry><!--константа-->
+										</document:SchmeNm>
+									</document:Othr>
+								</document:OrgId>
+							</document:Id>
+						</document:Pty>
+					</document:Cdtr>
+                    <document:CdtrAcct>
+                        <document:Id>
+                            <document:Othr>
+                                <document:Id>40702810500000000022</document:Id><!--31 Номер Счета Получателя-->
+                                <document:SchmeNm>
+                                    <document:Prtry>LegalAcct</document:Prtry><!--126 Категория Средств Счета Получателя-->
+                                </document:SchmeNm>
+                            </document:Othr>
+                        </document:Id>
+                    </document:CdtrAcct>
+				</document:OrgnlTxRef>
+				<document:SplmtryData>
+					<document:Envlp>
+						<document:IpsDt>
+							<document:OperDate>2001-12-17</document:OperDate><!--112 Операционный день обработки Сообщения СБП-->
+							<document:OperDate>2001-12-17</document:OperDate><!--111 Операционный день обработки Операции СБП-->
+						</document:IpsDt>
+					</document:Envlp>
+				</document:SplmtryData>
+			</document:TxInfAndSts>
+		</document:FIToFIPmtStsRpt>
+	</document:Document>
+</IPSEnvelope>

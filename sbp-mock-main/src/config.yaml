@@ -1,0 +1,6 @@
+listen_address: ":9201"
+callback_delay: 1s
+callback_address: "http://10.21.58.53:11502"
+influx:
+  address: "http://10.21.25.119:8086"
+  database: "ESPP_SBP_MOCK/autogen"
