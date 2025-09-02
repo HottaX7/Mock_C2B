@@ -8,7 +8,7 @@
 
 ### Запуск
 
-В репозитории находится бинарный файл `espp-mock`, собранный для linux. Для его запуска необходимо выполнить команду `./espp-mock`.
+В репозитории находится бинарный файл `c2b_mock_0209`, собранный для linux. Для его запуска необходимо выполнить команду `./2b_mock_0209`.
 
 ### Настройки
 
@@ -30,8 +30,8 @@
 
 ### Сборка
 
-`GOOS=linux go build -o espp-mock`
+`$ GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -buildvcs=false -o с2b_mock_2908`
 
 ### Запуск
 
-`LISTEN_ADDRESS=:9201 CALLBACK_ADDRESS=http://10.21.58.91:11502 ./espp-mock`
+`LISTEN_ADDRESS=:9201 CALLBACK_ADDRESS=http://10.21.58.91:11502 ./с2b_mock_2908`
