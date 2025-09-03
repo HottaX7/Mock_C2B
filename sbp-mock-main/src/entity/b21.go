@@ -25,7 +25,7 @@ func init() {
 	responseTemplateB21 = string(b)
 }
 
-func NewB21(transactionNumber string, b05 *B05Request) string {
+func NewB21(transactionNumber string, b05 *B05) string {
 	template := string(responseTemplateB21)
 
 	// Очищаем значения перед подстановкой
@@ -73,13 +73,6 @@ func NewB21(transactionNumber string, b05 *B05Request) string {
 	template = strings.Replace(template, "transactionNumber", transactionNumber, -1)
 	template = strings.Replace(template, "uuid", uuid, -1)
 
-	log.Debug().
-		Str("fromId", fromId).
-		Str("toId", toId).
-		Str("transactionNumber", transactionNumber).
-		Str("amount", amount).
-		Msg("B21 template values before replacement")
-
 	return template
 }
 
@@ -116,41 +109,6 @@ func NewB21(transactionNumber string, b05 *B05Request) string {
 
 // 	return response
 // }
-
-type B05Request struct {
-	AppHdr struct {
-		Fr struct {
-			FIId struct {
-				FinInstnId struct {
-					Othr struct {
-						ID string `xml:"Id"`
-					}
-				}
-			}
-		}
-		To struct {
-			FIId struct {
-				FinInstnId struct {
-					Othr struct {
-						ID string `xml:"Id"`
-					}
-				}
-			}
-		}
-		BizMsgIdr string
-		CreDt     string
-	}
-	Document struct {
-		FIToFICstmrCdtTrf struct {
-			CdtTrfTxInf struct {
-				IntrBkSttlmAmt struct {
-					Text string `xml:",chardata"`
-					Ccy  string `xml:"Ccy,attr"`
-				}
-			}
-		}
-	}
-}
 
 type B21 struct {
 	XMLName xml.Name `xml:"IPSEnvelope"`

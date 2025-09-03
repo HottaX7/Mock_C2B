@@ -128,4 +128,8 @@
 
 {"level":"error","op":"espp.SendBOperation","response status":"404 Not Found","response body":"","request url":"http://10.21.58.53:11502/v01/C2BQRD/1500020/B21","time":"2025-09-03T13:44:57+03:00","message":"Unexpected HTTP status in SendBOperation"}
 
-{"level":"error","error":"espp.SendBOperation: unexpected response status 404","time":"2025-09-03T13:44:57+03:00","message":"B05 usecase: ошибка отправки B21"}
+{"level":"error","error":"espp.SendBOperation: unexpected response status 404","time":"2025-09-03T13:44:57+03:00","message":"B05 usecase: ошибка отправки B21"}{"level":"info","time":"2025-09-03T18:17:34+03:00","message":"Сервис запущен. Логирование начато."}
+{"level":"debug","time":"2025-09-03T18:17:34+03:00","message":"&{ListenAddress::9201 CallbackDelay:1s CallbackAddress:http://10.21.58.53:11502 Influx:{Address:http://10.21.25.119:8086 Database:ESPP_SBP_MOCK/autogen}}"}
+{"level":"info","component":"IPSAdapder","callbackAddress":"http://10.21.58.53:11502","time":"2025-09-03T18:17:34+03:00","message":"Инициализация IPSAdapder"}
+{"level":"info","component":"SBPUsecase","time":"2025-09-03T18:17:34+03:00","message":"Инициализация SBPUsecase и зависимостей"}
+{"level":"info","address":":9201","time":"2025-09-03T18:17:34+03:00","message":"server start"}

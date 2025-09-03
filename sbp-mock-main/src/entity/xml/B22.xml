@@ -5,7 +5,7 @@
 			<header:FIId>
 				<header:FinInstnId>
 					<header:Othr>
-						<header:Id>111111111111</header:Id><!--22 Идентификатор Банка Плательщика-->
+						<header:Id>111111111111</header:Id>
 					</header:Othr>
 				</header:FinInstnId>
 			</header:FIId>
@@ -14,25 +14,25 @@
 			<header:FIId>
 				<header:FinInstnId>
 					<header:Othr>
-						<header:Id>000000000000</header:Id><!--23 Идентификатор ОПКЦ СБП-->
+						<header:Id>000000000000</header:Id>
 					</header:Othr>
 				</header:FinInstnId>
 			</header:FIId>
 		</header:To>
-		<header:BizMsgIdr>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</header:BizMsgIdr><!--27 Идентификатор Операции ОПКЦ СБП-->
-		<header:MsgDefIdr>pacs.002.001.09</header:MsgDefIdr><!--43 Схема Сообщения СБП (ISO-20022)-->
-		<header:BizSvc>B22</header:BizSvc><!--98 Тип сообщения СБП-->
-		<header:CreDt>2001-12-17T09:30:47.000Z</header:CreDt><!--13 Дата и Время Отправки Сообщения Банка Плательщика-->
+		<header:BizMsgIdr>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</header:BizMsgIdr>
+		<header:MsgDefIdr>pacs.002.001.09</header:MsgDefIdr>
+		<header:BizSvc>B22</header:BizSvc>
+		<header:CreDt>2001-12-17T09:30:47.000Z</header:CreDt>
 		<header:Sgntr>
 			<sign:Sign>MIIBYAYJKoZIhvcNAQcCoIIBUTCCAU0CAQExDjAMBggqhQMHAQECAgUAMAsGCSqGSIb3DQEHATGCASkwggElAgEBMFcwQzELMAkGA1UEBhMCUlUxCzAJBgNVBAgTAjQ1MQwwCgYDVQQKEwNDQlIxDDAKBgNVBAsTA01DSTELMAkGA1UEAxMCQ0ECEEBQFMAOiT+q8b+gD1s7b3wwDAYIKoUDBwEBAgIFAKBpMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE4MDcyMDE1MDIzMVowLwYJKoZIhvcNAQkEMSIEIM1RmSmeRD9IghIkJ1coLt4JuZKptvBxReUA3DQcvwDIMAwGCCqFAwcBAQEBBQAEQInuAy4mH/j0/nsMW2k2QnH9cQUhU3q45lsgBxnHNKqi2GIWOM6hjG1GbY6eFCEFGfx8iV/WUROFE2U7dQwcKxY=
-			</sign:Sign><!--106 Электронная Подпись-->
+			</sign:Sign>
 		</header:Sgntr>
 		<header:Rltd>
 			<header:Fr>
 				<header:FIId>
 					<header:FinInstnId>
 						<header:Othr>
-							<header:Id>000000000000</header:Id><!--23 Идентификатор ОПКЦ СБП-->
+							<header:Id>000000000000</header:Id>
 						</header:Othr>
 					</header:FinInstnId>
 				</header:FIId>
@@ -41,49 +41,49 @@
 				<header:FIId>
 					<header:FinInstnId>
 						<header:Othr>
-							<header:Id>111111111111</header:Id><!--22 Идентификатор Банка Плательщика-->
+							<header:Id>111111111111</header:Id>
 						</header:Othr>
 					</header:FinInstnId>
 				</header:FIId>
 			</header:To>
-			<header:BizMsgIdr>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</header:BizMsgIdr><!--27 Идентификатор Операции ОПКЦ СБП-->
-			<header:MsgDefIdr>pacs.002.001.09</header:MsgDefIdr><!--43 Схема Сообщения СБП (ISO-20022)-->
-			<header:BizSvc>B21</header:BizSvc><!--98 Тип сообщения СБП-->
-			<header:CreDt>2001-12-17T09:30:47.000Z</header:CreDt><!--15 Дата и Время Отправки Сообщения ОПКЦ СБП-->
+			<header:BizMsgIdr>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</header:BizMsgIdr>
+			<header:MsgDefIdr>pacs.002.001.09</header:MsgDefIdr>
+			<header:BizSvc>B21</header:BizSvc>
+			<header:CreDt>2001-12-17T09:30:47.000Z</header:CreDt>
 		</header:Rltd>
 	</header:AppHdr>
 	<document:Document>
 		<document:FIToFIPmtStsRpt>
 			<document:GrpHdr>
-				<document:MsgId>0666C3BD06FC4F9C8047D5791874010E</document:MsgId><!--79 Уникальный Номер Сообщения от Банка Плательщика-->
-				<document:CreDtTm>2001-12-17T09:30:47.000Z</document:CreDtTm><!--13 Дата и Время Отправки Сообщения Банка Плательщика-->
+				<document:MsgId>0666C3BD06FC4F9C8047D5791874010E</document:MsgId>
+				<document:CreDtTm>2001-12-17T09:30:47.000Z</document:CreDtTm>
 			</document:GrpHdr>
 			<document:OrgnlGrpInfAndSts>
-				<document:OrgnlMsgId>0E546E2C86FE4DB792D5F8067A554735</document:OrgnlMsgId><!--81 Уникальный Номер Сообщения от ОПКЦ СБП-->
-				<document:OrgnlMsgNmId>B21</document:OrgnlMsgNmId><!--98 Тип сообщения СБП-->
-				<document:OrgnlCreDtTm>2001-12-17T09:30:47.000Z</document:OrgnlCreDtTm><!--15 Дата и Время Отправки Сообщения ОПКЦ СБП-->
+				<document:OrgnlMsgId>0E546E2C86FE4DB792D5F8067A554735</document:OrgnlMsgId>
+				<document:OrgnlMsgNmId>B21</document:OrgnlMsgNmId>
+				<document:OrgnlCreDtTm>2001-12-17T09:30:47.000Z</document:OrgnlCreDtTm>
 			</document:OrgnlGrpInfAndSts>
 			<document:TxInfAndSts>
-				<document:OrgnlEndToEndId>C2BQRD</document:OrgnlEndToEndId><!--48 Тип Операции СБП-->
-				<document:OrgnlTxId>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</document:OrgnlTxId><!--27 Идентификатор Операции ОПКЦ СБП-->
+				<document:OrgnlEndToEndId>C2BQRD</document:OrgnlEndToEndId>
+				<document:OrgnlTxId>X1A2S3D5F6G7H8J9K0C4S5C6D7V5D1K2</document:OrgnlTxId>
 				<document:StsRsnInf>
 					<document:Orgtr>
 						<document:Id>
 							<document:OrgId>
 								<document:Othr>
-									<document:Id>111111111111</document:Id><!--22 Идентификатор Банка Плательщика-->
+									<document:Id>111111111111</document:Id>
 								</document:Othr>
 							</document:OrgId>
 						</document:Id>
 					</document:Orgtr>
 					<document:Rsn>
-						<document:Prtry>P00000</document:Prtry><!--29 Код Ответа-->
+						<document:Prtry>P00000</document:Prtry>
 					</document:Rsn>
-					<document:AddtlInf>OK</document:AddtlInf><!--Текстовое описание кода ответа-->
+					<document:AddtlInf>OK</document:AddtlInf>
 				</document:StsRsnInf>
-				<document:AccptncDtTm>2001-12-17T09:30:47.000Z</document:AccptncDtTm><!--99 Метка времени операции СБП-->
+				<document:AccptncDtTm>2001-12-17T09:30:47.000Z</document:AccptncDtTm>
 				<document:OrgnlTxRef>
-					<document:IntrBkSttlmAmt Ccy="RUB">11</document:IntrBkSttlmAmt><!--44 Сумма операции СБП-->
+					<document:IntrBkSttlmAmt Ccy="RUB">11</document:IntrBkSttlmAmt>
 				</document:OrgnlTxRef>
 			</document:TxInfAndSts>
 		</document:FIToFIPmtStsRpt>
