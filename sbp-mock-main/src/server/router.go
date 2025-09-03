@@ -32,7 +32,7 @@ func (b *RouterBuilder) Build() *chi.Mux {
 	r.With(middleware.Logger).HandleFunc("/payment/v1/universal-payment-link/paymentdata/{id}", b.SBPHandler.HandlePaymentData)
 	r.With(middleware.Logger).HandleFunc("/api/v1/C2BQRD/150000000020/B05", b.SBPHandler.HandleB05)
 	r.With(middleware.Logger).HandleFunc("/api/v1/C2BQRD/1500020/B05", b.SBPHandler.HandleB05)
-	/*r.With(middleware.Logger).HandleFunc("/v01/request/C2BQRD/1500020/B05", b.SBPHandler.HandleB05)*/
+	r.With(middleware.Logger).HandleFunc("/v01/request/C2BQRD/1500020/B05", b.SBPHandler.HandleB05)
 	r.With(middleware.Logger).HandleFunc("/api/v1/C2BQRD/120000000020/B05", b.SBPHandler.HandleB05)
 	r.With(middleware.Logger).HandleFunc("/v01/C2BQRD/{memberId}/B05", b.SBPHandler.HandleB05)
 	r.With(middleware.Logger).HandleFunc("/v01/C2BQRD/{memberId}/B06", b.SBPHandler.HandleB05) // или HandleB06
