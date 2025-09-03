@@ -155,36 +155,46 @@ func (a *IPSAdapder) GetQRData(ctx context.Context, uniqrID string) (string, err
 func (a *IPSAdapder) SendBOperation(ctx context.Context, operationType string, requestBody string) error {
 	const op = "espp.SendBOperation"
 	log.Info().Str("op", op).Str("operationType", operationType).Msg("Начало SendBOperation")
+	log.Debug().Str("requestBody", requestBody).Msg("SendBOperation: тело запроса")
 
 	transactionNumber, ok := ctx.Value("transactionNumber").(string)
 	if !ok {
+		log.Error().Str("op", op).Msg("Missing transactionNumber in context")
 		return fmt.Errorf("%s: missing transactionNumber in context", op)
 	}
+	log.Debug().Str("transactionNumber", transactionNumber).Msg("Got transaction number from context")
 
 	url := fmt.Sprintf("%s/v01/request/C2BQRD/1500020/%s", a.conf.CallbackAddress, operationType)
+	log.Debug().Str("url", url).Msg("Constructed SendBOperation URL")
+
 	req, err := http.NewRequest(http.MethodPost, url, strings.NewReader(requestBody))
 	if err != nil {
+		log.Error().Err(err).Str("op", op).Msg("Failed to create SendBOperation request")
 		return fmt.Errorf("%s: failed to create request: %w", op, err)
 	}
 
 	correlationID, ok := ctx.Value("correlationID").(string)
 	if !ok {
+		log.Error().Str("op", op).Msg("Missing correlationID in context")
 		return fmt.Errorf("%s: missing correlationID in context", op)
 	}
 	req.Header.Set("X-Correlation-ID", correlationID)
 	req.Header.Set("X-Sbp-Trn-Num", transactionNumber)
 	req.Header.Set("Content-Type", "application/xml")
+	log.Debug().Interface("headers", req.Header).Msg("Set request headers")
 
+	// Отправка запроса
 	resp, err := a.Client.Do(req)
 	if err != nil {
+		log.Error().Err(err).Str("op", op).Str("url", url).Msg("SendBOperation request failed")
 		return fmt.Errorf("%s: failed to send request: %w", op, err)
 	}
 	defer resp.Body.Close()
 
-	bodyBytes, _ := io.ReadAll(resp.Body)
-	bodyString := string(bodyBytes)
-
-	if resp.StatusCode != http.StatusAccepted && resp.StatusCode != http.StatusOK {
+	// Проверка статуса ответа
+	if resp.StatusCode != http.StatusAccepted {
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		bodyString := string(bodyBytes)
 		log.Error().
 			Str("op", op).
 			Str("response status", resp.Status).
@@ -194,19 +204,6 @@ func (a *IPSAdapder) SendBOperation(ctx context.Context, operationType string, r
 		return fmt.Errorf("%s: unexpected response status %d", op, resp.StatusCode)
 	}
 
-	// Логируем 200 OK отдельно, чтобы видеть, что оно прошло
-	if resp.StatusCode == http.StatusOK {
-		log.Info().
-			Str("op", op).
-			Str("response status", resp.Status).
-			Str("response body", bodyString).
-			Msg("SendBOperation успешно (200 OK)")
-	} else {
-		log.Info().
-			Str("op", op).
-			Str("response status", resp.Status).
-			Msg("SendBOperation успешно (202 Accepted)")
-	}
-
+	log.Info().Str("op", op).Int("status_code", resp.StatusCode).Msg("SendBOperation завершён успешно")
 	return nil
 }
