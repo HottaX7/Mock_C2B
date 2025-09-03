@@ -25,16 +25,18 @@ func init() {
 	responseTemplateB21 = string(b)
 }
 
-func NewB21(transactionNumber string, b05 *B05) string {
+func NewB21(transactionNumber string, b05 *B05Request) string {
+	template := string(responseTemplateB21)
 
-	fromId := b05.AppHdr.Fr.FIId.FinInstnId.Othr.ID
-	toId := b05.AppHdr.To.FIId.FinInstnId.Othr.ID
-	bizMsgIdr := b05.AppHdr.BizMsgIdr
-	creDt := b05.AppHdr.CreDt
+	// Очищаем значения перед подстановкой
+	fromId := strings.TrimSpace(b05.AppHdr.Fr.FIId.FinInstnId.Othr.ID)
+	toId := strings.TrimSpace(b05.AppHdr.To.FIId.FinInstnId.Othr.ID)
+	bizMsgIdr := strings.TrimSpace(b05.AppHdr.BizMsgIdr)
+	creDt := strings.TrimSpace(b05.AppHdr.CreDt)
 	creDtTm := time.Now().Format("2006-01-02T15:04:05:123Z")
 	//ident13 := b05.AppHdr.CreDt
 	//ident79 := b05.Document.FIToFICstmrCdtTrf.GrpHdr.MsgId
-	amount := b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.Text
+	amount := strings.TrimSpace(b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.Text)
 	//dbtrNm := b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Dbtr.Nm
 	//dbtrID := b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Dbtr.ID.PrvtId.Othr.ID
 	//dbtrAcct := b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.DbtrAcct.ID.Othr.ID
@@ -52,28 +54,26 @@ func NewB21(transactionNumber string, b05 *B05) string {
 	// }
 
 	// Финансовые данные
-	// amount := b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.Text
-	currency := b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.Ccy
+	currency := strings.TrimSpace(b05.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.Ccy)
 
 	// Генерация уникальных идентификаторов
 
 	uuid := strings.Replace(strings.ToUpper((uuid.New()).String()), "-", "", -1)
 
 	// Формируем ответ
-	response := responseTemplateB21
-	response = strings.Replace(response, "fromId", fromId, -1)
-	response = strings.Replace(response, "toId", toId, -1)
-	response = strings.Replace(response, "bizMsgIdr", bizMsgIdr, -1)
-	response = strings.Replace(response, "creDt", creDt, -1)
-	response = strings.Replace(response, "creDtTm", creDtTm, -1)
+	template = strings.Replace(template, "fromId", fromId, -1)
+	template = strings.Replace(template, "toId", toId, -1)
+	template = strings.Replace(template, "bizMsgIdr", bizMsgIdr, -1)
+	template = strings.Replace(template, "creDt", creDt, -1)
+	template = strings.Replace(template, "creDtTm", creDtTm, -1)
 	// response = strings.Replace(response, "dbtrID", dbtrID, -1)
 	// response = strings.Replace(response, "cdtrID", cdtrID, -1)
-	response = strings.Replace(response, "amount", amount, -1)
-	response = strings.Replace(response, "currency", currency, -1)
-	response = strings.Replace(response, "transactionNumber", transactionNumber, -1)
-	response = strings.Replace(response, "uuid", uuid, -1)
+	template = strings.Replace(template, "amount", amount, -1)
+	template = strings.Replace(template, "currency", currency, -1)
+	template = strings.Replace(template, "transactionNumber", transactionNumber, -1)
+	template = strings.Replace(template, "uuid", uuid, -1)
 
-	return response
+	return template
 }
 
 // 	// Извлечение информации из структуры B21

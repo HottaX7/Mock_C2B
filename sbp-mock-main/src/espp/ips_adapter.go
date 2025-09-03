@@ -164,7 +164,7 @@ func (a *IPSAdapder) SendBOperation(ctx context.Context, operationType string, r
 	}
 	log.Debug().Str("transactionNumber", transactionNumber).Msg("Got transaction number from context")
 
-	url := fmt.Sprintf("%s/v01/C2BQRD/request/1500020/%s", a.conf.CallbackAddress, operationType)
+	url := fmt.Sprintf("%s/v01/request/C2BQRD/1500020/%s", a.conf.CallbackAddress, operationType)
 	log.Debug().Str("url", url).Msg("Constructed SendBOperation URL")
 
 	req, err := http.NewRequest(http.MethodPost, url, strings.NewReader(requestBody))
