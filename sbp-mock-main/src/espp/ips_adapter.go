@@ -192,7 +192,8 @@ func (a *IPSAdapder) SendBOperation(ctx context.Context, operationType string, r
 	defer resp.Body.Close()
 
 	// Проверка статуса ответа
-	if resp.StatusCode != http.StatusAccepted {
+	// Проверка статуса ответа
+	if resp.StatusCode != http.StatusAccepted && resp.StatusCode != http.StatusOK {
 		bodyBytes, _ := io.ReadAll(resp.Body)
 		bodyString := string(bodyBytes)
 		log.Error().
@@ -202,8 +203,15 @@ func (a *IPSAdapder) SendBOperation(ctx context.Context, operationType string, r
 			Str("request url", req.URL.String()).
 			Msg("Unexpected HTTP status in SendBOperation")
 		return fmt.Errorf("%s: unexpected response status %d", op, resp.StatusCode)
+	} else {
+		// Логируем успешный ответ
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		bodyString := string(bodyBytes)
+		log.Info().
+			Str("op", op).
+			Str("response status", resp.Status).
+			Str("response body", bodyString).
+			Msg("SendBOperation: успешный ответ от шлюза")
+		return nil
 	}
-
-	log.Info().Str("op", op).Int("status_code", resp.StatusCode).Msg("SendBOperation завершён успешно")
-	return nil
 }

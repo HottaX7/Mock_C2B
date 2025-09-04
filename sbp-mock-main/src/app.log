@@ -153,3 +153,8 @@
 {"level":"info","component":"IPSAdapder","callbackAddress":"http://10.21.58.53:11502","time":"2025-09-03T23:18:08+03:00","message":"Инициализация IPSAdapder"}
 {"level":"info","component":"SBPUsecase","time":"2025-09-03T23:18:08+03:00","message":"Инициализация SBPUsecase и зависимостей"}
 {"level":"info","address":":9201","time":"2025-09-03T23:18:08+03:00","message":"server start"}
+{"level":"info","time":"2025-09-03T23:48:02+03:00","message":"Сервис запущен. Логирование начато."}
+{"level":"debug","time":"2025-09-03T23:48:02+03:00","message":"&{ListenAddress::9201 CallbackDelay:1s CallbackAddress:http://10.21.58.53:11502 Influx:{Address:http://10.21.25.119:8086 Database:ESPP_SBP_MOCK/autogen}}"}
+{"level":"info","component":"IPSAdapder","callbackAddress":"http://10.21.58.53:11502","time":"2025-09-03T23:48:02+03:00","message":"Инициализация IPSAdapder"}
+{"level":"info","component":"SBPUsecase","time":"2025-09-03T23:48:02+03:00","message":"Инициализация SBPUsecase и зависимостей"}
+{"level":"info","address":":9201","time":"2025-09-03T23:48:02+03:00","message":"server start"}

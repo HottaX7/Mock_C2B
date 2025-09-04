@@ -31,7 +31,7 @@ func NewB06(transactionID string, b05 *B05) string {
 	toId := b05.AppHdr.To.FIId.FinInstnId.Othr.ID
 	bizMsgIdr := b05.AppHdr.BizMsgIdr
 	creDt := b05.AppHdr.CreDt
-	creDtTm := time.Now().Format("2006-01-02T15:04:05:123Z")
+	creDtTm := time.Now().Format("2006-01-02T15:04:05.000Z")
 	uuidStr := strings.Replace(strings.ToUpper(uuid.New().String()), "-", "", -1)
 	operationControlNumber := "b05res" + strconv.Itoa(rand.Intn(9999-1000)+1000) + "xq"
 
@@ -47,15 +47,14 @@ func NewB06(transactionID string, b05 *B05) string {
 		Msg("B06: формируется ответ")
 
 	response := responseTemplateB06
-	response = strings.Replace(response, "fromId", fromId, -1)
-	response = strings.Replace(response, "toId", toId, -1)
-	response = strings.Replace(response, "bizMsgIdr", bizMsgIdr, -1)
-	response = strings.Replace(response, "time1", creDt, -1)
-	response = strings.Replace(response, "time2", creDtTm, -1)
-	//	response = strings.Replace(response, "ident", msgId, -1)
-	response = strings.Replace(response, "transactionNumber", transactionID, -1)
-	response = strings.Replace(response, "uuid", uuidStr, -1)
-	response = strings.Replace(response, "operationControlNumber", operationControlNumber, -1)
+	response = strings.Replace(response, "FROM_ID_PLACEHOLDER", fromId, -1)
+	response = strings.Replace(response, "TO_ID_PLACEHOLDER", toId, -1)
+	response = strings.Replace(response, "BIZ_MSG_IDR_PLACEHOLDER", bizMsgIdr, -1)
+	response = strings.Replace(response, "TIME1_PLACEHOLDER", creDt, -1)
+	response = strings.Replace(response, "TIME2_PLACEHOLDER", creDtTm, -1)
+	response = strings.Replace(response, "UUID_PLACEHOLDER", uuidStr, -1)
+	response = strings.Replace(response, "OPERATION_CONTROL_NUMBER_PLACEHOLDER", operationControlNumber, -1)
+	response = strings.Replace(response, "TRANSACTION_NUMBER_PLACEHOLDER", transactionID, -1)
 
 	log.Info().
 		Str("transactionID", transactionID).
